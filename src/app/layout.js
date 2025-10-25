@@ -25,7 +25,7 @@ export const metadata = {
     "Trina Dasgupta — Full-stack developer specializing in modern web applications, React, Node.js, and digital experiences.",
   keywords: [
     "Trina Dasgupta",
-    "Sahil Portfolio",
+    "Trina Portfolio",
     "Full Stack Developer",
     "Web Developer",
     "MERN Developer",
