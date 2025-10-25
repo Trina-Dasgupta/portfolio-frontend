@@ -73,18 +73,23 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/projectsList`,
-    {
-      next: { revalidate: 60 },
-    }
-  );
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/projectsList`,
+      { next: { revalidate: 60 } }
+    );
 
-  const projects = (await res.json()).data;
+    if (!res.ok) return [];
 
-  return projects.map((proj) => ({
-    slug: proj.navLink,
-  }));
+    const json = await res.json();
+    const projects = Array.isArray(json?.data) ? json.data : [];
+
+    return projects
+      .filter(p => p?.navLink)
+      .map(p => ({ slug: String(p.navLink) }));
+  } catch (err) {
+    return [];
+  }
 }
 
 export default async function ProjectShowCase({ params }) {
