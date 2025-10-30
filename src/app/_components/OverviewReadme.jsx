@@ -6,7 +6,7 @@ export default function OverviewReadme({ content }) {
       <p className="text-xs font-mono text-shadow-initial pb-3">
         <span className="text-gray-400">Trina Dasgupta</span>
         <span className="px-0.5 text-gray-400">/</span>
-        Readme
+        README
         <span className="text-gray-400">.md</span>
       </p>
       <div className="prose dark:prose-invert max-w-none h-full">
